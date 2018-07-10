@@ -26,4 +26,10 @@ class PersonController (val personService : PersonService){
         return personService.updatePerson(id, person).map { ResponseEntity.ok().body(it) }
             .orElse(ResponseEntity.notFound().build())
     }
+
+    @GetMapping
+    fun listPerson(): ResponseEntity<List<PersonDTO>> {
+        return personService.listPerson().map { ResponseEntity.ok().body(it) }
+                .orElse(ResponseEntity.notFound().build())
+    }
 }

@@ -51,4 +51,8 @@ class PersonService (private val personRepository: PersonRepository){
 
     }
 
+    fun listPerson(): Optional<List<PersonDTO>> {
+        return Optional.ofNullable(personRepository.findAll().toList().map{it.toDTO()})
+    }
+
 }
